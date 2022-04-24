@@ -24,7 +24,8 @@ export default function Home() {
 
     useEffect(() => { // EFFET FONDU AU CHARGEMENT DE LA PAGE
         setTimeout(() => {
-            document.getElementById('register').classList.remove('opacity-0') 
+            document.getElementById('register').classList.remove('opacity-0')
+            document.querySelector('#form-title').classList.remove('scale-0') 
         }, 100)
     })
 
@@ -158,7 +159,7 @@ export default function Home() {
                 } else {
                     setAlert({
                         ...alert,
-                        msg: 'Your account has been created ! Welcome',
+                        msg: 'Account created, you are going to be redirected',
                         type: 2
                     })
                     setTimeout(() => {
@@ -185,7 +186,7 @@ export default function Home() {
             type={alert.type} 
             msg={alert.msg}
             />
-            <h3 className='text-white font-medium'><span className="text-4xl text-yellow-500">Feedy</span> Your feedback App</h3>
+            <h3 id="form-title" className='transition-all delay-100 duration-500 text-white font-medium scale-0'><span className="text-4xl text-yellow-500">Feedy</span> Your feedback App</h3>
             <div className="mt-4 p-4 w-max bg-slate-800 rounded flex flex-col items-center shadow-xl">
                 <p className="text-center text-white text-xs">All in <span className="font-medium">Feedy</span> is simple ! <br/>Our goal is to make the simpliest and usefull application possible !</p>
                 <p className="text-center text-white text-xs">That's why we go directly to the essential. Get community feedback's of your product ! <span className="font-medium">Simple & easy</span></p>

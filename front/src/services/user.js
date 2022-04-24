@@ -11,8 +11,24 @@ export function getRegister(username, email, password) {
 
     return axios.post(api + '/api/user/register', data)
         .then((response) => {
-            console.log(response)
             return true
+        })
+        .catch((error) => {
+            return false
+        })
+
+}
+
+export function getLogin(username, password) {
+    
+    const data = {
+        email: username,
+        password
+    }
+
+    return axios.post(api + '/api/user/login', data)
+        .then((response) => {
+            return response.data
         })
         .catch((error) => {
             return false
