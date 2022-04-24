@@ -1,5 +1,12 @@
 # Feedback application
 
-* More informations soon.
+Feedback is an application to make easier the rating of products.
 
-### **back-end** : NodeJS, Express, Sequelize, MySQL
+## Features : 
+* User : an User can register, and sign-in. He will be able to modify his profil, and delete it.
+* Product : a Product is add by an User. He will be able to modify his product, and delete id.
+* Feedback : a Feedback of Product is send by Users, he will be able to comment the product and rate it. 
+
+### **back-end** : 
+
+*REST API : NodeJS, Express, Sequelize, MySQL*
