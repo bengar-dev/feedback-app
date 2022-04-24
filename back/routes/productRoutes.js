@@ -5,11 +5,11 @@ const productCtrl = require('../controllers/productCtrl.js')
 
 const auth = require('../middleware/auth.js')
 
-router.get('/', productCtrl.getProducts)
-router.get('/:id', productCtrl.getProduct)
+router.get('/', auth, productCtrl.getProducts)
+router.get('/:id', auth, productCtrl.getProduct)
 
-router.post('/', productCtrl.addProduct)
+router.post('/',auth, productCtrl.addProduct)
 
-router.delete('/:id', productCtrl.delProduct)
+router.delete('/:id', auth, productCtrl.delProduct)
 
 module.exports = router

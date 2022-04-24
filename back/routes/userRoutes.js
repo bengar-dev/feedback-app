@@ -6,12 +6,12 @@ const userCtrl = require('../controllers/userCtrl.js')
 const auth = require('../middleware/auth.js')
 const multer = require('../middleware/multer.js')
 
-router.get('/', userCtrl.getUsers)
-router.get('/:id', userCtrl.getUser)
+router.get('/', auth, userCtrl.getUsers)
+router.get('/:id', auth, userCtrl.getUser)
 
 router.post('/register', userCtrl.register)
 router.post('/login', userCtrl.login)
 
-router.delete('/:id', userCtrl.delUser)
+router.delete('/:id', auth, userCtrl.delUser)
 
 module.exports = router
