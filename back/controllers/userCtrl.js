@@ -34,11 +34,11 @@ exports.login = (req, res, next) => { // LOGIN
 
 exports.register = (req, res, next) => { // REGISTER
 
-    const validEmail = (email) => {
+    const validEmail = (email) => { // FONCTION REGEX VERIFICATION FORMAT EMAIL
         return email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
     }
 
-    const validPass = (password) => {
+    const validPass = (password) => { // FONCTION REGEX VERIFICATION FORMAT PASSWORD
         return password.match(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/gm)
     }
 

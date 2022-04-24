@@ -5,52 +5,55 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, proces
     dialect: 'mysql'
   })
 
-class User extends Model {
+class Product extends Model {
     static associate(models) {
         //association avec d'autres models
-        models.User.hasMany(models.Product, {foreignKey: 'id', onDelete: 'cascade'})
+        models.Product.belongsTo(models.User, { foreignKey: 'autorId', onDelete: 'cascade'})
     }
 }
 
-User.init({
-    id: {
+Product.init({
+    productId: {
         type: DataTypes.BIGINT(11),
         autoIncrement: true,
         primaryKey: true
     },
-    email: {
-        type: DataTypes.STRING(255),
-        allowNull: false,
-        unique: true
-    },
-    password: {
+    name: {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    firstname: {
+    manufacturer: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull:false
     },
-    lastname : {
+    image: {
         type: DataTypes.STRING(255),
-        allowNull: true
+        allowNull: false
     },
-    biography : {
+    price : {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
+    link : {
+        type: DataTypes.STRING(255),
+        allowNull: false
+    },
+    desc: {
         type: DataTypes.TEXT,
-        allowNull: true
+        allowNull:false
     },
-    avatar: {
+    like: {
         type: DataTypes.STRING(255),
-        defaultValue: 'https://www.belin.re/wp-content/uploads/2018/11/default-avatar.png'
-    },
-    rank: {
-        type: DataTypes.BIGINT(11),
         allowNull: false,
-        defaultValue: 0
+        defaultValue: []
+    },
+    autorId: {
+        type: DataTypes.BIGINT(11),
+        allowNull: false
     }
-}, {
+},{
     sequelize,
-    modalName: 'User'
+    modalName: 'Product'
 })
 
-module.exports = sequelize.model('User')
+module.exports = sequelize.model('Product')
