@@ -52,6 +52,7 @@ exports.register = (req, res, next) => { // REGISTER
     bcrypt.hash(req.body.password, 10)
         .then(hash => {
             const user = new db.User({
+                username: req.body.username,
                 email: req.body.email,
                 password: hash
             })
