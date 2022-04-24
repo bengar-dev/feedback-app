@@ -15,7 +15,7 @@ export default function Home() {
         username: '',
         email: '',
         password: '',
-        rules: false
+        rules: 'checked'
     })
     const [alert, setAlert] = useState({
         msg: '',
@@ -74,6 +74,7 @@ export default function Home() {
     }
 
     const handleSubmit = () => {
+        const checkRules = document.getElementById('rules')
         if(!form.username || !form.email || !form.password) {
             setAlert({
                 ...alert,
@@ -125,7 +126,21 @@ export default function Home() {
                     type: 0
                 })
             },  3000)
-        } else {
+        } 
+        else if(!checkRules.checked) {
+            setAlert({
+                ...alert,
+                msg: 'You must agree with all statements',
+                type: 1
+            })
+            setTimeout(() => {
+                setAlert({
+                    msg: '',
+                    type: 0
+                })
+            },  3000)
+        }
+        else {
             async function verifRegister() {
                 const result = await getRegister(form.username, form.email, form.password)
                 if(!result) {
@@ -205,7 +220,9 @@ export default function Home() {
                 </div>
                 <p className="rounded text-xs bg-zinc-100 w-fit p-1 flex items-center"><i id="icon-times" className="fas fa-times text-red-500 mr-1" />8 characters, 1 uppercase, 1 lowercase, 1 number</p>
                 <div className="flex items-center text-xs space-x-2">
-                    <input type="checkbox"/><label htmlFor="rules">I agree all statements in <a href="#" className="transition-all duration-200 underline font-medium hover:text-blue-800 hover:no-underline">Terms of service</a></label>
+                    <input
+                    onClick={(e) => handleInput(e)}
+                    type="checkbox" id="rules"/><label htmlFor="rules">I agree all statements in <a href="#" className="transition-all duration-200 underline font-medium hover:text-blue-800 hover:no-underline">Terms of service</a></label>
                 </div>
                 <button 
                 onClick={(e) => e.preventDefault(handleSubmit())}

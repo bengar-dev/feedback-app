@@ -34,7 +34,7 @@ export default function Home() {
                     <label htmlFor='username' className="absolute right-4"><i className="fas fa-user text-sm" /></label>
                     <input type="text"
                     id="username" 
-                    placeholder="username"
+                    placeholder="username / email"
                     className="w-full transition-all duration-200 border border-zinc-300 focus:border-blue-800 focus:text-blue-700 outline-none p-2"/>
                 </div>
                 <div className="relative flex justify-around items-center text-sm">
