@@ -9,6 +9,7 @@ dotenv = require('dotenv').config()
 // ROUTES
 
 const userRoutes = require('./routes/userRoutes')
+const productRoutes = require('./routes/productRoutes')
 
 // CONNECTIONS
 
@@ -43,5 +44,6 @@ app.use((req, res, next) => {
 // CHEMINS API
 
 app.use('/api/user', userRoutes)
+app.use('/api/product', productRoutes)
 
 module.exports = app, sequelize;

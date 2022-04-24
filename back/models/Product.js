@@ -31,7 +31,7 @@ Product.init({
         allowNull: false
     },
     price : {
-        type: DataTypes.STRING(255),
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     link : {
@@ -45,7 +45,7 @@ Product.init({
     like: {
         type: DataTypes.STRING(255),
         allowNull: false,
-        defaultValue: []
+        defaultValue: '[]'
     },
     autorId: {
         type: DataTypes.BIGINT(11),
