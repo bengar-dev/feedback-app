@@ -2,6 +2,4 @@
 
 * More informations soon.
 
-Technologies : 
-
-## **back-end** : NodeJS, Express, Sequelize, MySQL
+### **back-end** : NodeJS, Express, Sequelize, MySQL
