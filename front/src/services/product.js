@@ -4,14 +4,26 @@ const token = JSON.parse(localStorage.getItem('token'))
 
 export function sendProduct(product) {
 
-    console.log(product)
-
     const data = {
         ...product,
         autorId: token.userId
     }
 
-    axios.post(api + '/api/product', data, {
+    return axios.post(api + '/api/product', data, {
+        headers: {'Authorization' : 'Bearer ' + token.token}
+    })
+        .then((response) => {
+            return response.data
+        })
+        .catch((error) => {
+            return error.response.data.error
+        })
+
+}
+
+export function getProducts() {
+
+    return axios.get(api + '/api/product', {
         headers: {'Authorization' : 'Bearer ' + token.token}
     })
         .then((response) => {

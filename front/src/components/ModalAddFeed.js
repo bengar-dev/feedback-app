@@ -1,8 +1,14 @@
 import React, {useState} from 'react'
-
+import { useSelector, useDispatch } from 'react-redux'
 import { sendProduct } from '../services/product'
 
 export default function ModalAddFeed(props) {
+
+  const dispatch = useDispatch()
+
+  const {productArray} = useSelector(state => ({
+    ...state.productReducer
+  }))
 
   const [addFeedBack, setAddFeedBack] = useState({
     name: '',
@@ -62,6 +68,10 @@ export default function ModalAddFeed(props) {
           desc: '',
           image: ''
         })
+        dispatch({
+          type: 'ADDPRODUCT',
+          payload: result
+        })
         props.toggle()
       }
     }
@@ -70,7 +80,7 @@ export default function ModalAddFeed(props) {
   }
 
   return (
-    <div className="absolute top-0 left-0 w-full min-h-screen bg-slate-800/50 flex items-center justify-center">
+    <div className="absolute z-20 top-0 left-0 w-full min-h-screen bg-slate-800/50 flex items-center justify-center">
         <button 
         onClick={(e) => e.preventDefault(props.toggle())}
         className="absolute top-2 right-4"><i className='transition-all duration-200 fas fa-times text-6xl hover:text-red-500' /></button>
