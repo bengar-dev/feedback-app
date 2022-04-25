@@ -84,13 +84,13 @@ exports.delUser = (req, res, next) => { // DELETE ONE USER
 }
 
 exports.getUsers = (req, res, next) => { // GET ALL USERS
-    db.User.findAll()
+    db.User.findAll({attributes: {exclude: ['password']}})
         .then((users) => res.status(200).json(users))
         .catch(error => res.status(401).json(error), db.User.sync())
 }
 
 exports.getUser = (req, res, next) => { // GET ONE USER
-    db.User.findOne({where: {id: req.params.id}})
+    db.User.findOne({where: {id: req.params.id}}, {attributes: {exclude: ['password']}})
         .then((user) => {
             if(!user) {
                 return res.status(401).json({error: 'User not found'})

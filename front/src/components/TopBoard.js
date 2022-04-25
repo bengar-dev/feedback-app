@@ -1,9 +1,14 @@
 import React, {useState} from 'react'
+import { useSelector } from 'react-redux'
 import ModalAddFeed from './ModalAddFeed'
 
 export default function TopBoard() {
 
   const [toggle, setToggle] = useState(false)
+
+  const {productArray} = useSelector(state => ({
+    ...state.productReducer
+  }))
 
   const handleToggle = () => {
     setToggle(!toggle)
@@ -16,7 +21,7 @@ export default function TopBoard() {
       toggle={handleToggle}/>
       }
         <i className="fas fa-comment-dots" />
-        <p className="ml-4 font-medium"><span className="font-bold text-sky-400">120</span> Feedback</p>
+        <p className="ml-4 font-medium"><span className="font-bold text-sky-400">{productArray.length}</span> Feedback</p>
         <div className="ml-10 flex items-center space-x-2">
             <p>Sort by : </p>
             <select className="w-40 bg-transparent font-medium outline-none">

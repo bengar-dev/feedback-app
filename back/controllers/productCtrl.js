@@ -21,7 +21,7 @@ exports.getProducts = (req, res, next) => { // GET ALL PRODUCTS
     db.Product.findAll({
         include: [{
             model: db.User,
-            attributes: {exclue: ['password']}
+            attributes: {exclude: ['password']}
         }],
         order: [['createdAt', 'DESC']]
     })
@@ -34,7 +34,7 @@ exports.getProduct = (req, res, next) => { // GET ONE PRODUCT
         where: {productId: req.params.id},
         include: [{
             model: db.User,
-            attributes: {exclue: ['password']}
+            attributes: {exclude: ['password']}
         }]
     })
         .then((product) => {
