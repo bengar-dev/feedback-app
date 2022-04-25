@@ -1,8 +1,20 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ModalAddFeed from './ModalAddFeed'
 
 export default function TopBoard() {
+
+  const [toggle, setToggle] = useState(false)
+
+  const handleToggle = () => {
+    setToggle(!toggle)
+  }
+
   return (
     <div className="flex items-center h-max bg-sky-900 rounded p-4 text-white text-sm">
+      {toggle &&
+      <ModalAddFeed 
+      toggle={handleToggle}/>
+      }
         <i className="fas fa-comment-dots" />
         <p className="ml-4 font-medium"><span className="font-bold text-sky-400">120</span> Feedback</p>
         <div className="ml-10 flex items-center space-x-2">
@@ -12,7 +24,9 @@ export default function TopBoard() {
                 <option className="p-2 bg-sky-900 text-white">Alphabétic</option>
             </select>
         </div>
-        <button className="transition-all duration-200 text-xs mr-0 ml-auto flex items-center bg-yellow-500 hover:bg-rose-400 p-2 rounded">
+        <button 
+        onClick={(e) => e.preventDefault(handleToggle())}
+        className="transition-all duration-200 text-xs mr-0 ml-auto flex items-center bg-yellow-500 hover:bg-rose-400 p-2 rounded">
             <i className="text-xs fas fa-plus mr-2" />
             Add feedback
         </button>
