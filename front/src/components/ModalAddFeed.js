@@ -74,8 +74,8 @@ export default function ModalAddFeed(props) {
         <button 
         onClick={(e) => e.preventDefault(props.toggle())}
         className="absolute top-2 right-4"><i className='transition-all duration-200 fas fa-times text-6xl hover:text-red-500' /></button>
-        <form className="bg-white shadow-xl p-4 w-1/2 text-slate-900 flex flex-col space-y-2">
-            <h1 className="p-2 font-medium text-center text-xl">Add a new feedback</h1>
+        <form className="rounded bg-white shadow-xl p-4 w-1/2 text-slate-900 flex flex-col space-y-2">
+            <h1 className="p-2 text-slate-600 font-medium text-center text-xl">Add a new feedback</h1>
             <label htmlFor="name" className="text-sm">Name</label>
             <input 
             value={addFeedBack.name}
