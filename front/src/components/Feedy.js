@@ -1,9 +1,13 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+AOS.init();
+
 export default function Feedy(props) {
   return (
-    <div className="transition-all duration-500 flex mb-4 bg-white h-32 w-full rounded shadow p-4 text-cyan-900 hover:shadow-lg">
+    <div className="transition-all duration-500 flex mb-4 bg-white h-32 w-full rounded shadow-md p-4 text-cyan-900"  data-aos="fade-up" data-aos-duration='2000'>
         <div className="w-1/6 border-r">
           
         </div>

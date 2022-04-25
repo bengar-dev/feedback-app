@@ -6,8 +6,9 @@ export default function ModalAddFeed(props) {
 
   const dispatch = useDispatch()
 
-  const {productArray} = useSelector(state => ({
-    ...state.productReducer
+  const {productArray, userInfo} = useSelector(state => ({
+    ...state.productReducer,
+    ...state.userReducer
   }))
 
   const [addFeedBack, setAddFeedBack] = useState({
@@ -68,9 +69,13 @@ export default function ModalAddFeed(props) {
           desc: '',
           image: ''
         })
+        let newObject = {
+          ...result,
+          User: userInfo
+        }
         dispatch({
           type: 'ADDPRODUCT',
-          payload: result
+          payload: newObject
         })
         props.toggle()
       }

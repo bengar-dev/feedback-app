@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
 import { getInfo } from '../services/user'
 
 export default function Profil() {
 
-    const [user, setUser] = useState({      
-    })
+    const dispatch = useDispatch()
+
+    const {userInfo} = useSelector(state => ({
+      ...state.userReducer
+    }))
 
     const handleLogout = () => {
         localStorage.removeItem('token')
@@ -20,7 +24,10 @@ export default function Profil() {
         if(typeof result === 'string') {
           console.log(result)
         } else {
-          setUser(result)
+          dispatch({
+            type: 'GETUSER',
+            payload: result
+          })
         }
       }
       getInfoProfil()
@@ -29,8 +36,8 @@ export default function Profil() {
   return (
     <div className="relative bg-gradient-to-r rounded p-8 from-violet-500 via-rose-400 to-fuchsia-500 shadow-lg">      
         <div className='flex items-center space-x-4'>
-        <h1 className="text-white">Welcome, <Link to={'/profil/' + user.id} className="transition-all font-medium hover:text-yellow-300">{user.username}</Link></h1>
-        <img src={user.avatar} className="w-12 h-12 object-cover rounded-full border-2 border-yellow-400 shadow-lg"/>
+        <h1 className="text-white">Welcome, <Link to={'/profil/' + userInfo.id} className="transition-all font-medium hover:text-yellow-300">{userInfo.username}</Link></h1>
+        <img src={userInfo.avatar} className="w-12 h-12 object-cover rounded-full border-2 border-yellow-400 shadow-lg"/>
         </div>
         <p className="text-sm font-medium text-white"><span className="font-bold text-yellow-300">Feedy</span> board</p>
         <button 
