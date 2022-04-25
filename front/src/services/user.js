@@ -31,7 +31,7 @@ export function getLogin(username, password) {
             return response.data
         })
         .catch((error) => {
-            return false
+            return error.response.data.error
         })
 
 }

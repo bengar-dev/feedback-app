@@ -44,8 +44,18 @@ export default function Home() {
     const verifLogin = () => {
         async function awaitLogin() {
             const result = await getLogin(form.username, form.password)
-            if(!result) {
-                console.log('erreur')
+            if(typeof result === 'string') {
+                setAlert({
+                    ...alert,
+                    msg: result,
+                    type: 1
+                })
+                setTimeout(() => {
+                    setAlert({
+                        msg: '',
+                        type: 0
+                    })
+                },  3000)
             } else {
                 setAlert({
                     ...alert,
