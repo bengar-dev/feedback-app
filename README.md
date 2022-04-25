@@ -7,7 +7,7 @@ Feedback is an application to make easier the rating of products.
 * 📱 **Product** : a Product is add by an User. He will be able to modify his product, and delete id.
 * 🔥 **Feedback** : a Feedback of Product is send by Users, he will be able to comment the product and rate it. 
 
-### **back-end** : 
+## Back-end : 
 
 *REST API using : NodeJS, Express, Sequelize, MySQL*
 
@@ -16,7 +16,7 @@ Installation :
 * Install dependencies with `npm install`
 * Run the server with `node server`
 
-### **front-end** : 
+## Front-end : 
 
 *APP using : React, Redux, React-router, Tailwind*
 
