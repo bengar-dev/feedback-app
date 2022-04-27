@@ -10,6 +10,8 @@ router.get('/:id', auth, productCtrl.getProduct)
 
 router.post('/',auth, productCtrl.addProduct)
 
+router.put('/like/:id', productCtrl.likeDislikes)
+
 router.delete('/:id', auth, productCtrl.delProduct)
 
 module.exports = router

@@ -30,7 +30,9 @@ export default function Profil() {
           })
         }
       }
-      getInfoProfil()
+      if(userInfo.length === 0) {
+        getInfoProfil()
+      }
     })
 
   return (

@@ -32,11 +32,11 @@ export default function Home() {
       }
     }
 
-    awaitGetProducts()
+    if(productArray.length <= 0) {
+      awaitGetProducts()
+    }
     
   }, [])
-
-  console.log(productArray)
 
   return (
     <div className="min-h-screen bg-slate-100 pt-20">
@@ -51,6 +51,7 @@ export default function Home() {
             productArray.map(item => 
               <Feedy 
               key={item.productId}
+              like={item.like}
               username={item.User.username}
               name={item.name}
               desc={item.desc}

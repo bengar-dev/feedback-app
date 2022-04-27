@@ -58,3 +58,26 @@ exports.delProduct = (req, res, next) => {
                 .catch(error => res.status(401).json({error: error}))
         })
 }
+
+exports.likeDislikes = (req, res, next) => {
+    db.Product.findOne({
+        where: {productId: req.params.id}
+    })
+        .then((product) => {
+            if(!product) return res.status(401).json({error : 'Product not found'})
+            else {
+            const likeArray = JSON.parse(product.like)
+            const findIndex = likeArray.findIndex(p => p === req.body.userId)
+            if(findIndex === -1) {
+                likeArray.push(req.body.userId)
+            } else {
+                likeArray.splice(findIndex, 1)
+            }
+            const jsonUsersLikes = JSON.stringify(likeArray)
+            db.Product.update({like: jsonUsersLikes}, {where: {productId: req.params.id}})
+                .then(() => res.status(200).json({message: 'Product Like/Dislike'}))
+                .catch(error => res.status(500).json({message: error}))
+            }
+        })
+        .catch(error => res.status(500).json({error : error}))
+}
