@@ -5,6 +5,7 @@ import TopBoard from '../components/TopBoard'
 import Feedy from '../components/Feedy'
 
 import { getProducts } from '../services/product'
+import BlockOptions from '../components/BlockOptions'
 
 export default function Home() {
 
@@ -43,6 +44,7 @@ export default function Home() {
       <main className="transition-all duration-500 delay-200 scale-50 opacity-0 flex space-x-10 ml-auto mr-auto w-8/12">
         <div className="w-1/4">
           <Profil />
+          <BlockOptions />
         </div>
         <div className="w-2/3">
          <TopBoard />

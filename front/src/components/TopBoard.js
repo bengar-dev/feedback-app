@@ -14,6 +14,10 @@ export default function TopBoard() {
     setToggle(!toggle)
   }
 
+  const handleChange = (e) => {
+    console.log(e.selected)
+  }
+
   return (
     <div className="flex items-center h-max bg-sky-900 rounded p-4 text-white text-sm">
       {toggle &&
@@ -24,7 +28,9 @@ export default function TopBoard() {
         <p className="ml-4 font-medium"><span className="font-bold text-sky-400">{productArray.length}</span> Feedback</p>
         <div className="ml-10 flex items-center space-x-2">
             <p>Sort by : </p>
-            <select className="w-40 bg-transparent font-medium outline-none">
+            <select
+            onChange={(e) => handleChange(e)}
+            className="w-40 bg-transparent font-medium outline-none">
                 <option className="p-2 bg-sky-900 text-white">Most Upvotes</option>
                 <option className="p-2 bg-sky-900 text-white">Alphabétic</option>
             </select>
