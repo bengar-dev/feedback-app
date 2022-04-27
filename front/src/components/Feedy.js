@@ -1,5 +1,8 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import { useSelector, useDispatch } from 'react-redux'
+
+import { getLikes } from '../services/product'
 
 import AOS from 'aos'
 import 'aos/dist/aos.css'
@@ -7,12 +10,42 @@ AOS.init();
 
 export default function Feedy(props) {
 
+  const token = JSON.parse(localStorage.getItem('token'))
+
+  const dispatch = useDispatch()
+
+  const {productArray} = useSelector(state => ({
+    ...state.productReducer
+  }))
+
   const likes = JSON.parse(props.like)
+
+  const handleLikes = (id) => {
+    async function awaitLikes() {
+      const result = await getLikes(id)
+      if(typeof result === 'string') {
+        console.log(result)
+      } else {
+        const obj = {
+          id,
+          userId: token.userId
+        }
+        dispatch({
+          type: 'LIKE',
+          payload: obj
+        })
+      }
+    }
+    awaitLikes()
+
+  }
 
   return (
     <div className="transition-all duration-500 flex mb-4 bg-white h-32 w-full rounded shadow-md p-4 text-cyan-900"  data-aos="fade-up" data-aos-duration='2000'>
         <div className="w-1/6 border-r flex flex-col items-center justify-center">
-          <button className="transition-all duration-200 shadow-none bg-slate-300 hover:bg-slate-400 hover:text-white text-sky-900 w-12 h-12 rounded flex flex-col justify-center items-center text-sm font-medium">
+          <button 
+          onClick={(e) => e.preventDefault(handleLikes(props.id))}
+          className="transition-all duration-200 shadow-none bg-slate-300 hover:bg-slate-400 hover:text-white text-sky-900 w-12 h-12 rounded flex flex-col justify-center items-center text-sm font-medium">
             <i className="fas fa-angle-up mb-1" />
             <span className="font-bold">{likes.length}</span>
           </button>

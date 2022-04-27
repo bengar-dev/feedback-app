@@ -51,6 +51,7 @@ export default function Home() {
             productArray.map(item => 
               <Feedy 
               key={item.productId}
+              id={item.productId}
               like={item.like}
               username={item.User.username}
               name={item.name}

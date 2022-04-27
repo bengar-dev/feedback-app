@@ -34,3 +34,21 @@ export function getProducts() {
         })
 
 }
+
+export function getLikes(id) {
+
+    const data = {
+        userId: token.userId
+    }
+
+    return axios.put(api + '/api/product/like/' + id, data, {
+        headers: {'Authorization' : 'Bearer ' + token.token}
+    })
+        .then((response) => {
+            return true
+        })
+        .catch((error) => {
+            return error.response.data.error
+        })
+
+}

@@ -60,6 +60,9 @@ exports.delProduct = (req, res, next) => {
 }
 
 exports.likeDislikes = (req, res, next) => {
+
+    console.log(`body ${req.body}`)
+
     db.Product.findOne({
         where: {productId: req.params.id}
     })
