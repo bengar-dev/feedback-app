@@ -42,7 +42,7 @@ export default function Feedy(props) {
   }
 
   return (
-    <div className="transition-all duration-500 flex mb-4 bg-white h-32 w-full rounded shadow-md p-4 text-cyan-900"  data-aos="fade-up" data-aos-duration='2000'>
+    <div className="transition-all duration-500 flex mb-4 bg-white hover:bg-slate-50 h-32 w-full rounded shadow-lg p-4 text-cyan-900"  data-aos="fade-up" data-aos-duration='2000'>
         <div className="w-1/6 border-r flex flex-col items-center justify-center">
           {findUser === -1 ?
           <button 
