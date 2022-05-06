@@ -66,7 +66,7 @@ export default function Feedy(props) {
       </div>
       <div className="relative w-4/6 p-2 flex flex-col space-y-2">
         <Link
-          to="/"
+          to={`/product/${props.id}`}
           className="transiton-all duration-200 text-sm font-bold text-sky-900 hover:text-sky-500"
         >
           {props.name}

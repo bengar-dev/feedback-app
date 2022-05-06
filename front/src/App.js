@@ -1,4 +1,5 @@
 import { Routes, Route, Link } from "react-router-dom";
+import Details from "./containers/Details";
 import Home from "./containers/Home";
 
 import Login from './containers/Login'
@@ -13,6 +14,7 @@ function App() {
       {isAuth ? 
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/product/:id' element={<Details />} />
       </Routes>
       :
       <Routes>

@@ -35,6 +35,18 @@ export function getProducts() {
 
 }
 
+export function getProduct(id) {
+    return axios.get(api + '/api/product/' + id, {
+        headers: {'Authorization' : 'Bearer ' + token.token}
+    })
+        .then((response) => {
+            return response.data
+        })
+        .catch((error) => {
+            return error.response.data.error
+        })
+}
+
 export function getLikes(id) {
 
     const data = {
