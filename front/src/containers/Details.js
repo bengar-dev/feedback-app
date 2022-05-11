@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Profil from "../components/Profil";
 import TopBoard from "../components/TopBoard";
 import Feedy from "../components/Feedy";
 
-import { getProducts } from "../services/product";
+import { getProducts, getProduct } from "../services/product";
 import BlockOptions from "../components/BlockOptions";
 import ProductDetails from "../components/ProductDetails";
 
@@ -14,30 +14,24 @@ export default function Home() {
   const params = useParams()
   const dispatch = useDispatch();
 
-  const { productArray } = useSelector((state) => ({
-    ...state.productReducer,
-  }));
+  const [product, setProduct] = useState({})
 
   useEffect(() => {
     setTimeout(() => {
       document.querySelector("main").classList.remove("opacity-0", "scale-50");
     }, 200);
 
-    async function awaitGetProducts() {
-      const result = await getProducts();
+    async function awaitGetProduct() {
+      const result = await getProduct(params.id);
       if (typeof result === "string") {
         console.log(result);
       } else {
-        dispatch({
-          type: "GETPRODUCTS",
-          payload: result,
-        });
+        setProduct(result)
       }
     }
 
-    if (productArray.length <= 0) {
-      awaitGetProducts();
-    }
+    awaitGetProduct()
+
   }, []);
 
   return (
@@ -52,6 +46,7 @@ export default function Home() {
           <div className="mt-6 w-full">
             <ProductDetails 
             id={params.id}
+            details={product}
             />
           </div>
         </div>
