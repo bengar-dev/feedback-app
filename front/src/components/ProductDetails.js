@@ -7,10 +7,6 @@ import { getProduct } from '../services/product'
 export default function ProductDetails(props) {
 
   const dispatch = useDispatch();
-  
-  const { productArray } = useSelector((state) => ({
-    ...state.productReducer,
-  }));
 
   return (
     <div>
